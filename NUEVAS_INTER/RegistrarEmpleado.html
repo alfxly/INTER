@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Empleados - Claw Guardians</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/RegistrarEmpleado.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img src="IMG/logo.png" alt="Logo Claw Guardians">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li class="dropdown">
+              <a href="#">Empleados</a>
+              <ul class="dropdown-content">
+                <li><a href="RegistrarEmpleado.html">Registrar Empleado</a></li>
+                <li><a href="Empleados.html">Modificar Empleados</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Productos</a>
+              <ul class="dropdown-content">
+                <li><a href="RegistraProducto.html">Registrar Producto</a></li>
+                <li><a href="Productos.html">Modificar Productos</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Servicios</a>
+              <ul class="dropdown-content">
+                <li><a href="Solicitud.html">Solicitud de Servicios</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div class="perfil">
+          <a href="Perfil.html">
+              <img src="IMG/perfil.png" alt="Icono de perfil" class="user-icon">
+          </a>
+      </div>
+      </header>
+
+    <main>
+        <section class="form-section">
+            <div class="form-container">
+                <form>
+                    <h2>Registrar Empleados</h2>
+                    <label for="tipo-doc"  required>Tipo Doc</label>
+                    <select id="tipo-doc">
+                        <option value="cc">Cédula</option>
+                        <option value="ce">Cédula Extranjera</option>
+                    </select>
+
+                    <label for="documento">Documento</label>
+                    <input type="text" id="documento"  required>
+
+                    <label for="rol">Rol</label>
+                    <select id="rol" required>
+                        <option value="veterinario">Veterinario</option>
+                        <option value="empleado">Empleado</option>
+                    </select>
+
+                    <label for="estado">Estado</label>
+                    <select id="estado"  required>
+                        <option value="activo">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
+
+                    <label for="nombre">Nombre Empleado</label>
+                    <input type="text" id="nombre"  required>
+
+                    <label for="apellidos">Apellidos Empleado</label>
+                    <input type="text" id="apellidos"  required>
+                </form>
+            </div>
+
+            <div class="form-container">
+                <form>
+                    <h2>Datos de Contacto</h2>
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" required>
+
+                    <label for="celular">Celular</label>
+                    <input type="tel" id="celular" required>
+
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" required>
+
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" required>
+
+                    <div class="buttons">
+                        <button type="reset">Cancelar</button>
+                        <button type="submit" onclick="validarRegistro(event)">Guardar</button>
+
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="enlaces">
+            <h3>Enlaces de página</h3>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Empleados</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Perfil</a></li>
+            </ul>
+        </div>
+        <div class="informacion">
+            <h3>Información</h3>
+            <ul>
+                <li><a href="#">Políticas de privacidad</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+        <div class="contacto">
+            <h3>Contáctanos</h3>
+            <ul>
+                <li><a href="#"><i class="icon-whatsapp"><img src="IMG/whatsapp.png" alt="Icono de perfil"></i></a></li>
+                <li><a href="#"><i class="icon-instagram"><img src="IMG/instagram.png" alt="Icono de perfil"></i></a></li>
+                <li><a href="#"><i class="icon-maps"><img src="IMG/marcador.png" alt="Icono de perfil"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+        <!-- Modal para empleado registrado con éxito -->
+        <div id="modal-success" class="modal">
+            <div class="modal-content">
+                <h2>Éxito</h2>
+                <p>El empleado ha sido registrado con éxito.</p>
+                <button class="close-btn" onclick="cerrarModal('modal-success')">Cerrar</button>
+            </div>
+        </div>
+    
+        <!-- Modal para empleado ya registrado -->
+        <div id="modal-error" class="modal modal-error">
+            <div class="modal-content">
+                <h2>Error</h2>
+                <p>El empleado ya está registrado.</p>
+                <button class="close-btn" onclick="cerrarModal('modal-error')">Cerrar</button>
+            </div>
+        </div>
+    <script>
+        function validarRegistro(event) {
+            event.preventDefault();  // Prevenir el envío del formulario
+
+            // Aquí agregarás la validación con tu API para verificar si el empleado ya está registrado
+            // Si el empleado ya está registrado, mostrar el modal de error
+            // mostrarModal('modal-error');
+
+            // Si el registro es exitoso, mostrar el modal de éxito
+            mostrarModal('modal-success');
+        }
+
+        function mostrarModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
+        }
+
+        function cerrarModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+        }
+
+        // Cerrar modal cuando se hace clic fuera de él
+        window.onclick = function(event) {
+            const modalSuccess = document.getElementById('modal-success');
+            const modalError = document.getElementById('modal-error');
+            if (event.target == modalSuccess) {
+                modalSuccess.style.display = 'none';
+            }
+            if (event.target == modalError) {
+                modalError.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

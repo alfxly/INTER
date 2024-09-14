@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Empleados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/Empleados.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo">
+    </div>
+      <img src="IMG/logo.png" alt="Logo Claw Guardians">
+    </div>
+    <nav>
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li class="dropdown">
+            <a href="#">Empleados</a>
+            <ul class="dropdown-content">
+              <li><a href="RegistrarEmpleado.html">Registrar Empleado</a></li>
+              <li><a href="Empleados.html">Modificar Empleados</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">Productos</a>
+            <ul class="dropdown-content">
+              <li><a href="#">Registrar Producto</a></li>
+              <li><a href="#">Modificar Productos</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="Solicitud.html">Servicios</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="perfil">
+        <img src="IMG/perfil.png" alt="Icono de perfil" class="user-icon">
+        </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="employees-section">
+      <h1>EMPLEADOS</h1>
+      <table class="employees-table">
+        <thead>
+          <tr>
+            <th>TIPO DOC.</th>
+            <th>DOCUMENTO</th>
+            <th>ROL</th>
+            <th>ESTADO</th>
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>TELÉFONO</th>
+            <th>CORREO</th>
+            <th>DIRECCIÓN</th>
+            <th>CONTRASEÑA</th>
+            <th>EDITAR</th>
+            <th>ELIMINAR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cédula</td>
+            <td>102388554</td>
+            <td>Veterinario</td>
+            <td>Activo</td>
+            <td>Juan</td>
+            <td>Perez</td>
+            <td>30200000</td>
+            <td>juan.perez@gmail.com</td>
+            <td>calle 123</td>
+            <td>thth</td>
+            <td><button class="edit-btn">✏️</button></td>
+            <td><button class="delete-btn">🗑️</button></td>
+          </tr>
+          <tr>
+            <td>Cédula</td>
+            <td>102388554</td>
+            <td>Veterinario</td>
+            <td>Activo</td>
+            <td>Juan</td>
+            <td>Perez</td>
+            <td>30200000</td>
+            <td>juan.perez@gmail.com</td>
+            <td>calle 123</td>
+            <td>thth</td>
+            <td><button class="edit-btn">✏️</button></td>
+            <td><button class="delete-btn">🗑️</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <div class="enlaces">
+        <h3>Enlaces de página</h3>
+        <ul>
+            <li><a href="IndexAdmin.html">Inicio</a></li>
+            <li><a href="Empleados.html">Empleados</a></li>
+            <li><a href="Productos.html">Productos</a></li>
+            <li><a href="Solicitud.html">Servicios</a></li>
+            <li><a href="Perfil.html">Perfil</a></li>
+        </ul>
+    </div>
+    <div class="informacion">
+        <h3>Información</h3>
+        <ul>
+            <li><a href="#">Políticas de privacidad</a></li>
+            <li><a href="#">Términos y Condiciones</a></li>
+        </ul>
+    </div>
+    <div class="contacto">
+        <h3>Contáctanos</h3>
+        <ul>
+            <li><a href="#"><i class="icon-whatsapp"><img src="IMG/whatsapp.png" alt="Icono de perfil"></i></a></li>
+            <li><a href="#"><i class="icon-instagram"><img src="IMG/instagram.png" alt="Icono de perfil"></i></a></li>
+            <li><a href="#"><i class="icon-maps"><img src="IMG/marcador.png" alt="Icono de perfil"></i></a></li>
+        </ul>
+    </div>
+</footer>
+
+<div id="editModal" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Actualizar Empleado</h2>
+      <form>
+          <label for="estado">Estado</label>
+          <select id="estado">
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+          </select>
+          <button type="submit">Guardar</button>
+      </form>
+  </div>
+</div>
+
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>¿Seguro que desea eliminar este Empleado?</h2>
+      <button class="confirm-delete">Eliminar</button>
+      <button class="cancel-delete">Cancelar</button>
+  </div>
+</div>
+
+<div id="successModal" class="modal">
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <h2>¡Guardado con éxito!</h2>
+  <p>El Empleado ha sido actualizado correctamente.</p>
+  <button class="confirm">Aceptar</button>
+</div>
+</div>
+
+<div id="deleteSuccessModal" class="modal">
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <h2>¡Eliminado con éxito!</h2>
+  <p>El empleado ha sido eliminado correctamente.</p>
+  <button class="confirm">Aceptar</button>
+</div>
+</div>
+
+<script>
+  
+const editModal = document.getElementById('editModal');
+const deleteModal = document.getElementById('deleteModal');
+const editButtons = document.querySelectorAll('.edit-btn');
+const deleteButtons = document.querySelectorAll('.delete-btn');
+const closeButtons = document.querySelectorAll('.close');
+const successModal = document.getElementById('successModal');
+const deleteSuccessModal = document.getElementById('deleteSuccessModal');
+
+editButtons.forEach(button => {
+button.addEventListener('click', () => {
+  editModal.style.display = 'flex';
+});
+});
+
+deleteButtons.forEach(button => {
+button.addEventListener('click', () => {
+  deleteModal.style.display = 'flex';
+});
+});
+
+closeButtons.forEach(button => {
+button.addEventListener('click', () => {
+  closeModal(editModal);
+  closeModal(deleteModal);
+});
+});
+
+window.onclick = function(event) {
+if (event.target == editModal || event.target == deleteModal) {
+  closeModal(editModal);
+  closeModal(deleteModal);
+}
+};
+
+function closeModal(modal) {
+modal.style.animation = 'fadeOut 0.5s ease';
+setTimeout(() => {
+  modal.style.display = 'none';
+  modal.style.animation = '';
+}, 500); 
+}
+
+
+const saveButton = document.querySelector('#editModal button[type="submit"]');
+
+const confirmDeleteButton = document.querySelector('#deleteModal .confirm-delete');
+
+saveButton.addEventListener('click', (e) => {
+e.preventDefault(); 
+closeModal(editModal); 
+successModal.style.display = 'flex'; 
+});
+
+confirmDeleteButton.addEventListener('click', () => {
+closeModal(deleteModal);
+deleteSuccessModal.style.display = 'flex'; 
+});
+
+const successConfirmButtons = document.querySelectorAll('.confirm');
+successConfirmButtons.forEach(button => {
+button.addEventListener('click', () => {
+  closeModal(successModal);
+  closeModal(deleteSuccessModal);
+});
+});
+
+closeButtons.forEach(button => {
+button.addEventListener('click', () => {
+  closeModal(successModal);
+  closeModal(deleteSuccessModal);
+});
+});
+</script>
+</body>
+</html>
+

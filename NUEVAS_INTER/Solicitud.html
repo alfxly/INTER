@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes de Servicio - Claw Guardians</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/Solicitud.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="IMG/logo.png" alt="Logo Claw Guardians">
+          </div>
+        <nav>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li class="dropdown">
+              <a href="#">Empleados</a>
+              <ul class="dropdown-content">
+                <li><a href="RegistrarEmpleado.html">Registrar Empleado</a></li>
+                <li><a href="Empleados.html">Modificar Empleados</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Productos</a>
+              <ul class="dropdown-content">
+                <li><a href="RegistrarProducto.html">Registrar Producto</a></li>
+                <li><a href="Productos.html">Modificar Productos</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="Solicitud.html">Servicios</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="perfil">
+            <a href="Perfil.html">
+                <img src="IMG/perfil.png" alt="Icono de perfil" class="user-icon">
+            </a>
+        </div>
+      </header>
+
+    <main>
+        <section class="service-requests">
+            <h2>SOLICITUDES DE SERVICIO</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>DIRECCIÓN</th>
+                        <th>FECHA</th>
+                        <th>HORA</th>
+                        <th>ACEPTAR</th>
+                        <th>ELIMINAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XXXXXXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XX/XX/XX</td>
+                        <td>00:00</td>
+                        <td><button class="btn accept" onclick="confirmService()">✔</button></td>
+                        <td><button class="btn reject" onclick="rejectService()">✖</button></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XX/XX/XX</td>
+                        <td>00:00</td>
+                        <td><button class="btn accept" onclick="confirmService()">✔</button></td>
+                        <td><button class="btn reject" onclick="rejectService()">✖</button></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XX/XX/XX</td>
+                        <td>00:00</td>
+                        <td><button class="btn accept" onclick="confirmService()">✔</button></td>
+                        <td><button class="btn reject" onclick="rejectService()">✖</button></td>
+                    </tr>
+                    <tr>
+                        <td>XXXXXXXXX</td>
+                        <td>XXXXX</td>
+                        <td>XX/XX/XX</td>
+                        <td>00:00</td>
+                        <td><button class="btn accept" onclick="confirmService()">✔</button></td>
+                        <td><button class="btn reject" onclick="rejectService()">✖</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+  
+    <footer>
+        <div class="enlaces">
+            <h3>Enlaces de página</h3>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Empleados</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Perfil</a></li>
+            </ul>
+        </div>
+        <div class="informacion">
+            <h3>Información</h3>
+            <ul>
+                <li><a href="#">Políticas de privacidad</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+        <div class="contacto">
+            <h3>Contáctanos</h3>
+            <ul>
+                <li><a href="#"><i class="icon-whatsapp"><img src="IMG/whatsapp.png" alt="Icono de perfil"></i></a></li>
+                <li><a href="#"><i class="icon-instagram"><img src="IMG/instagram.png" alt="Icono de perfil"></i></a></li>
+                <li><a href="#"><i class="icon-maps"><img src="IMG/marcador.png" alt="Icono de perfil"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+<div class="overlay"></div>
+
+
+    <script>
+        function showAlert(message, type) {
+
+            let overlay = document.querySelector('.overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.classList.add('overlay');
+                document.body.appendChild(overlay);
+            }
+        
+            const alertBox = document.createElement('div');
+            alertBox.classList.add('custom-alert');
+            
+            if (type === 'confirm') {
+                alertBox.classList.add('confirm');
+            }
+        
+            alertBox.innerHTML = `
+                <h4>${message}</h4>
+                <button onclick="closeAlert(this)">OK</button>
+            `;
+            document.body.appendChild(alertBox);
+        
+            overlay.classList.add('active');
+            alertBox.classList.add('active');
+        }
+        
+        function closeAlert(button) {
+            const alertBox = button.parentElement;
+            const overlay = document.querySelector('.overlay');
+            
+            alertBox.classList.remove('active');
+            overlay.classList.remove('active');
+        
+            setTimeout(() => {
+                alertBox.remove();
+                overlay.remove();
+            }, 300);
+        }
+        
+        function confirmService() {
+            showAlert('Servicio confirmado', 'confirm');  
+        }
+        
+        function rejectService() {
+            showAlert('Has rechazado el servicio');
+        }
+        
+    </script>
+</body>
+</html>

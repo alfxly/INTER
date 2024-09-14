@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Producto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/RegistrarProducto.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="IMG/logo.png" alt="Logo Claw Guardians">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Empleados</a>
+                    <ul class="dropdown-content">
+                        <li><a href="RegistrarEmpleado.html">Registrar Empleado</a></li>
+                        <li><a href="Empleados.html">Modificar Empleados</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Productos</a>
+                    <ul class="dropdown-content">
+                        <li><a href="RegistraProducto.html">Registrar Producto</a></li>
+                        <li><a href="Productos.html">Modificar Productos</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="Solicitud.html">Servicios</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="perfil">
+            <a href="Perfil.html">
+                <img src="IMG/perfil.png" alt="Icono de perfil" class="user-icon">
+            </a>
+        </div>
+    </header>
+    <br>
+    <br>
+
+    <section class="form-section">
+        <div class="form-container">
+            <h2>Registrar Producto</h2>
+            <form id="productForm">
+                <label for="nombre">Nombre Producto:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="estado">Categoría:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="Veterinaria">Veterinaria</option>
+                    <option value="agotado">Agotado</option>
+                </select>
+
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" name="descripcion" required>
+
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required>
+
+                <label for="precio">Precio:</label>
+                <input type="text" id="precio" name="precio" required>
+
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="disponible">Disponible</option>
+                    <option value="agotado">Agotado</option>
+                </select>
+
+                <div class="buttons">
+                    <button type="button" class="cancel-btn">Cancelar</button>
+                    <button type="submit" class="submit-btn">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <footer>
+        <div class="enlaces">
+            <h3>Enlaces de página</h3>
+            <ul>
+                <li><a href="IndexAdmin.html">Inicio</a></li>
+                <li><a href="Empleados.html">Empleados</a></li>
+                <li><a href="Productos.html">Productos</a></li>
+                <li><a href="Solicitud.html">Servicios</a></li>
+                <li><a href="Perfil.html">Perfil</a></li>
+            </ul>
+        </div>
+        <div class="informacion">
+            <h3>Información</h3>
+            <ul>
+                <li><a href="#">Políticas de privacidad</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+        <div class="contacto">
+            <h3>Contáctanos</h3>
+            <ul>
+                <li><a href="#"><i class="icon-whatsapp"><img src="IMG/whatsapp.png" alt="Icono de perfil"></i></a></li>
+                <li><a href="#"><i class="icon-instagram"><img src="IMG/instagram.png" alt="Icono de perfil"></i></a></li>
+                <li><a href="#"><i class="icon-maps"><img src="IMG/marcador.png" alt="Icono de perfil"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <div id="alert-overlay" class="alert-overlay">
+        <div id="alert-message" class="alert"></div>
+    </div>
+
+    <script>
+        document.getElementById('productForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe normalmente
+
+            // Simulación de éxito
+            const alertOverlay = document.getElementById('alert-overlay');
+            const alertMessage = document.getElementById('alert-message');
+
+            alertMessage.className = 'alert'; // Restablece la clase de la alerta
+            alertOverlay.classList.add('active'); // Muestra el overlay
+
+            alertMessage.classList.add('alert-success');
+            alertMessage.textContent = 'Producto registrado con éxito';
+
+            // Cierra la alerta cuando se hace clic en el overlay
+            alertOverlay.addEventListener('click', function() {
+                alertOverlay.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
